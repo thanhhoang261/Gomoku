@@ -54,3 +54,7 @@ _deps
 # IDE settings
 .idea/
 .vscode/
+
+# Node / web game
+node_modules/
+public/engine/

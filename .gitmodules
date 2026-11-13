@@ -1,9 +1,3 @@
-[submodule "Gomocalc"]
-	path = Gomocalc
-	url = https://github.com/dhbloo/gomoku-calculator.git
-[submodule "Trainer"]
-	path = Trainer
-	url = https://github.com/dhbloo/pytorch-nnue-trainer.git
 [submodule "Networks"]
-	path = Networks
+	path = engine/networks
 	url = https://github.com/dhbloo/rapfi-networks.git

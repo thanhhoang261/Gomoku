@@ -1,0 +1,22 @@
+{
+  "name": "rapfi-gomoku-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser Gomoku/Renju game built on the WebAssembly build of the Rapfi engine",
+  "type": "module",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build:engine": "bash scripts/build-engine.sh",
+    "puzzles": "node scripts/gen-puzzles.mjs --per-level 12 --minutes 10 --out public/data/puzzles.json",
+    "test": "node --test tests/unit.test.mjs tests/e2e.test.mjs",
+    "test:unit": "node --test tests/unit.test.mjs",
+    "test:e2e": "node --test tests/e2e.test.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.17.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

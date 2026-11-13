@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rapfi Gomoku</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+  <section class="board-wrap">
+    <canvas id="board" width="720" height="720"></canvas>
+    <div id="status">Loading engine…</div>
+  </section>
+  <aside>
+    <h1>Rapfi Gomoku</h1>
+
+    <fieldset id="settings">
+      <legend>New game</legend>
+      <label>Rule
+        <select id="rule">
+          <option value="0">Freestyle (five or more)</option>
+          <option value="1">Standard (exactly five)</option>
+          <option value="4">Renju (Black: no 3-3, 4-4, overline)</option>
+        </select>
+      </label>
+      <label>You play
+        <select id="side"><option value="black">Black (moves first)</option><option value="white">White</option></select>
+      </label>
+      <label>Difficulty
+        <select id="level">
+          <option value="0">Easy (0.1s, depth 4)</option>
+          <option value="1">Medium (0.5s, depth 8)</option>
+          <option value="2" selected>Hard (2s)</option>
+          <option value="3">Expert (5s)</option>
+        </select>
+      </label>
+      <button id="new" class="primary">New game</button>
+    </fieldset>
+
+    <fieldset id="puzzleBox">
+      <legend>Tactical puzzles</legend>
+      <label>Level
+        <select id="plevel">
+          <option value="1">Easy — win in 2 moves</option>
+          <option value="2">Medium — win in 3 moves</option>
+          <option value="3">Hard — win in 4–5 moves</option>
+        </select>
+      </label>
+      <div class="row">
+        <button id="pnew" class="primary">New puzzle</button>
+        <button id="pretry">Retry</button>
+      </div>
+      <div id="pinfo">Loading puzzles…</div>
+    </fieldset>
+
+    <div class="row">
+      <button id="undo">Undo</button>
+      <button id="hint">Hint</button>
+      <button id="analyze" title="Show the engine's top moves">Analyze</button>
+    </div>
+    <div class="row">
+      <button id="save">Save</button>
+      <button id="load">Load</button>
+      <button id="export">Export</button>
+      <button id="import">Import</button>
+      <input type="file" id="file" accept=".json" hidden>
+    </div>
+    <div class="row">
+      <button id="review" title="Have the engine grade every move of this game">Review game</button>
+    </div>
+
+    <div class="eval">
+      <div class="bar"><div id="evalFill"></div></div>
+      <div id="evalText">—</div>
+    </div>
+    <pre id="pv">No analysis yet.</pre>
+
+    <section id="reviewPanel" hidden>
+      <canvas id="chart" width="600" height="140"></canvas>
+      <div id="reviewSummary"></div>
+      <ol id="mistakes"></ol>
+      <div class="hintline">Click the chart or a mistake to inspect the position; use ← → to step through the game; click the board to return.</div>
+    </section>
+    <ol id="moves"></ol>
+  </aside>
+</main>
+<script src="js/main.js" type="module"></script>
+</body>
+</html>

@@ -21,6 +21,8 @@
 #include "../core/pos.h"
 #include "../core/types.h"
 
+#include <vector>
+
 namespace Search {
 
 class SearchThread;

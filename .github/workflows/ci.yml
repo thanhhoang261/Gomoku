@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Fetch network weights
+        run: git submodule update --init --depth 1 engine/networks
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: mymindstorm/setup-emsdk@v14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Build engine (WebAssembly)
+        run: npm run build:engine
+
+      - name: End-to-end tests
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:e2e

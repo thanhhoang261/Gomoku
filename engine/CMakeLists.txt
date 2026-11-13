@@ -350,7 +350,7 @@ endif()
 
 if(EMSCRIPTEN)
     message(STATUS "Setting up build for Emscripten.")
-    set(NETWORKS_DIR "${CMAKE_SOURCE_DIR}/../Networks")
+    set(NETWORKS_DIR "${CMAKE_SOURCE_DIR}/networks")
 
     if(NOT NO_COMMAND_MODULES)
         message(FATAL_ERROR
